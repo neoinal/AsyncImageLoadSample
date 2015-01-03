@@ -88,7 +88,6 @@
     <ClCompile Include="BaseScene.cpp" />
     <ClCompile Include="GraphicController.cpp" />
     <ClCompile Include="GraphicMemData.cpp" />
-    <ClCompile Include="LoadScene.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="SampleScene.cpp" />
   </ItemGroup>
@@ -96,7 +95,6 @@
     <ClInclude Include="BaseScene.h" />
     <ClInclude Include="GraphicController.h" />
     <ClInclude Include="GraphicMemData.h" />
-    <ClInclude Include="LoadScene.h" />
     <ClInclude Include="SampleScene.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
