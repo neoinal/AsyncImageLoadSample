@@ -9,6 +9,12 @@ GraphicController::GraphicController()
 
 GraphicController::~GraphicController()
 {
+	std::map<std::string, int>::iterator itr = mImageHandleMap.begin();
+	while (itr != mImageHandleMap.end())
+	{
+		DeleteGraph(itr->second);
+		mImageHandleMap.erase(itr++);
+	}
 }
 
 void GraphicController::AddLoadImageData(std::string tag, std::string filePath)
@@ -18,7 +24,13 @@ void GraphicController::AddLoadImageData(std::string tag, std::string filePath)
 
 void GraphicController::RemoveImageData(std::string tag)
 {
-	mImageDataMap.erase(tag);
+	if (mImageHandleMap.count(tag) == 1)
+	{
+		std::map<std::string, int>::iterator itr = mImageHandleMap.find(tag);
+		DeleteGraph(itr->second);
+		mImageHandleMap.erase(itr);
+	}
+	mImageHandleMap.erase(tag);
 }
 
 /* 
