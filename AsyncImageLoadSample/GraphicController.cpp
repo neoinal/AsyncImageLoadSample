@@ -11,10 +11,20 @@ GraphicController::~GraphicController()
 {
 }
 
+void GraphicController::AddLoadImageData(std::string tag, std::string filePath)
+{
+	mImageDataMap[tag] = filePath;
+}
+
+void GraphicController::RemoveImageData(std::string tag)
+{
+	mImageDataMap.erase(tag);
+}
+
 /* 
  * 非同期に画像ファイルをロードする
  */
-void GraphicController::LoadImageData(std::map<std::string, std::string> loadImageMap)
+void GraphicController::LoadImageData()
 {
 	mIsCreated = false;
 	// 非同期に画像ファイルをメモリ上にロードする
@@ -35,7 +45,7 @@ void GraphicController::LoadImageData(std::map<std::string, std::string> loadIma
 		// 確認用のスリープ
 		Sleep(5000);
 		return imageDataMap;
-	}, loadImageMap);
+	}, mImageDataMap);
 }
 
 /* 

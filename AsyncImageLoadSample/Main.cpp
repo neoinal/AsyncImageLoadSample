@@ -1,5 +1,4 @@
 #include <iostream>
-#include <map>
 
 // メモリリーク確認用 ここから
 #include "crtdbg.h"
@@ -26,14 +25,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	// DXライブラリの初期化処理
 	DxLib_Init();
 
-	// 画像読み込み用MAPの作成
-	std::map<std::string, std::string> loadImageMap;
-	loadImageMap["TEST1"] = "img/test1.jpg";
-	loadImageMap["TEST2"] = "img/test2.jpg";
-	loadImageMap["TEST3"] = "img/test3.jpg";
-
 	GraphicController graphicController;
-	graphicController.LoadImageData(loadImageMap);
+	// 読み込む画像データ
+	graphicController.AddLoadImageData("TEST1", "img/test1.jpg");
+	graphicController.AddLoadImageData("TEST2", "img/test2.jpg");
+	graphicController.AddLoadImageData("TEST3", "img/test3.jpg");
+	graphicController.LoadImageData();
 
 	int imageHandle;
 	while (ScreenFlip() == 0 && ProcessMessage() == 0 && ClearDrawScreen() == 0)
